@@ -1,9 +1,10 @@
 "use client";
-import { useRegisterModel } from "@/hooks/useRegisterModel";
+import { useRegisterModel } from "@/app/hooks/useRegisterModel";
 import { FC, useCallback, useState } from "react";
 import { Input } from "../Input";
 import { Model } from "../Model";
-import { useLoginModel } from "@/hooks/useLoginModel";
+import { useLoginModel } from "@/app/hooks/useLoginModel";
+import axios from "axios";
 
 export const RegisterModel: FC = () => {
   const registerModel = useRegisterModel();
@@ -26,13 +27,20 @@ export const RegisterModel: FC = () => {
     try {
       setIsLoading(true);
 
+      await axios.post("api/register", {
+        email,
+        password,
+        username,
+        name,
+      });
+
       registerModel.onClose();
     } catch (error) {
       console.error(error);
     } finally {
       setIsLoading(false);
     }
-  }, [registerModel]);
+  }, [email, name, password, registerModel, username]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">

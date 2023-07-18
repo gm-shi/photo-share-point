@@ -1,5 +1,5 @@
 "use client";
-import { useLoginModel } from "@/hooks/useLoginModel";
+import { useLoginModel } from "@/app/hooks/useLoginModel";
 import { useRouter } from "next/navigation";
 import { FC, useCallback } from "react";
 import { MdCameraRoll } from "react-icons/md";

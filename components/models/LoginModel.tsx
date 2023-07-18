@@ -1,9 +1,9 @@
 "use client";
-import { useLoginModel } from "@/hooks/useLoginModel";
+import { useLoginModel } from "@/app/hooks/useLoginModel";
 import { FC, useCallback, useState } from "react";
 import { Input } from "../Input";
 import { Model } from "../Model";
-import { useRegisterModel } from "@/hooks/useRegisterModel";
+import { useRegisterModel } from "@/app/hooks/useRegisterModel";
 
 export const LoginModel: FC = () => {
   const loginModel = useLoginModel();
