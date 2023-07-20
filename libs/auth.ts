@@ -1,8 +1,7 @@
-import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-import prisma from "@/app/libs/prismadb";
+import prisma from "@/libs/prismadb";
 import { AuthOptions } from "next-auth";
 
 const bcrypt = require("bcryptjs");
@@ -50,5 +49,3 @@ export const authOptions: AuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-
-export default NextAuth(authOptions);

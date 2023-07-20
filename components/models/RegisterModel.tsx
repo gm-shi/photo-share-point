@@ -1,9 +1,11 @@
 "use client";
-import { useRegisterModel } from "@/app/hooks/useRegisterModel";
+import { useRegisterModel } from "@/hooks/useRegisterModel";
 import { FC, useCallback, useState } from "react";
 import { Input } from "../Input";
 import { Model } from "../Model";
-import { useLoginModel } from "@/app/hooks/useLoginModel";
+import { toast } from "react-hot-toast";
+import { useLoginModel } from "@/hooks/useLoginModel";
+import { signIn } from "next-auth/react";
 import axios from "axios";
 
 export const RegisterModel: FC = () => {
@@ -34,9 +36,18 @@ export const RegisterModel: FC = () => {
         name,
       });
 
+      toast.success("Account created.");
+
+      signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
       registerModel.onClose();
     } catch (error) {
       console.error(error);
+      toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);
     }

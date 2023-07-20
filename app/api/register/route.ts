@@ -1,13 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 const bcrypt = require("bcryptjs");
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export async function POST(req: Request) {
+  console.log(req.method);
   if (req.method !== "POST") {
-    return res.status(405).end();
+    return new Response("", {
+      status: 405,
+    });
   }
 
   try {
-    const { email, username, name, password } = req.body;
+    const { email, username, name, password } = await req.json();
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -21,11 +25,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         hashedPassword,
       },
     });
-    return res.status(200).json(user);
+    return NextResponse.json({ user });
   } catch (error) {
     console.error(error);
-    return res.status(400).end();
+    return new Response("", {
+      status: 400,
+    });
   }
-};
-
-export { handler as GET, handler as POST };
+}

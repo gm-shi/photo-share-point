@@ -1,4 +1,5 @@
-import { fetcher } from "@/app/libs/fetcher";
+"use client";
+import { fetcher } from "@/libs/fetcher";
 import useSWR from "swr";
 
 export const useCurrentUser = () => {

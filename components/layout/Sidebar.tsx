@@ -6,8 +6,10 @@ import { SidebarLogo } from "./SidebarLogo";
 import React from "react";
 import { SidebarIcon } from "./SidebarIcon";
 import { SidebarPhotoSharePointButton } from "./SidebarPhotoSharePointButton";
+import { useCurrentUser } from "@/hooks/userCurrentUser";
 
 export const Sidebar: FC = () => {
+  const { data: currentUser } = useCurrentUser();
   const icons = [
     {
       label: "Home",
@@ -40,7 +42,9 @@ export const Sidebar: FC = () => {
               />
             );
           })}
-          <SidebarIcon onClick={() => {}} icon={BiLogOut} label="Logout" />
+          {currentUser && (
+            <SidebarIcon onClick={() => {}} icon={BiLogOut} label="Logout" />
+          )}
           <SidebarPhotoSharePointButton />
         </div>
       </div>
