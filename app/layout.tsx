@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { LoginModel } from "@/components/models/LoginModel";
 import { RegisterModel } from "@/components/models/RegisterModel";
 import { Toaster } from "react-hot-toast";
+import { EditModel } from "@/components/models/EditModel";
 
 export const metadata = {
   title: "Next.js",
@@ -18,6 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <NextAuthProvider>
           <Toaster />
+          <EditModel />
           <RegisterModel />
           <LoginModel />
           <div className="h-screen bg-black">

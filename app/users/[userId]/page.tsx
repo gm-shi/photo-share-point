@@ -9,8 +9,6 @@ import { ClipLoader } from "react-spinners";
 const UserView = ({ params }: { params: { userId: string } }) => {
   const { data: fetchedUser, isLoading } = useUser(params.userId);
 
-  console.log({ fetchedUser });
-
   return isLoading || !fetchedUser ? (
     <div className="flex justify-center items-center h-full">
       <ClipLoader color="lightblue" size={80} />
