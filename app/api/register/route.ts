@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 const bcrypt = require("bcryptjs");
 
 export async function POST(req: Request) {
-  console.log(req.method);
   if (req.method !== "POST") {
     return new Response("", {
       status: 405,
@@ -14,8 +13,6 @@ export async function POST(req: Request) {
     const { email, username, name, password } = await req.json();
 
     const hashedPassword = await bcrypt.hash(password, 12);
-
-    console.log({ email, username, name, hashedPassword });
 
     const user = await prisma?.user.create({
       data: {

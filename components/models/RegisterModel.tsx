@@ -78,6 +78,7 @@ export const RegisterModel: FC = () => {
         onChange={(event) => setPassword(event.target.value)}
         disabled={isLoading}
         value={password}
+        type="password"
       />
     </div>
   );
