@@ -29,7 +29,7 @@ export const RegisterModel: FC = () => {
     try {
       setIsLoading(true);
 
-      await axios.post("api/register", {
+      await axios.post("/api/register", {
         email,
         password,
         username,
