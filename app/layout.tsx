@@ -1,6 +1,11 @@
 import "../styles/globals.css";
 import React from "react";
 import { NextAuthProvider } from "./SessionProviderWrapper";
+import { FollowBar } from "@/components/layout/FollowBar";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { LoginModel } from "@/components/models/LoginModel";
+import { RegisterModel } from "@/components/models/RegisterModel";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Next.js",
@@ -11,7 +16,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider>
+          <Toaster />
+          <RegisterModel />
+          <LoginModel />
+          <div className="h-screen bg-black">
+            <div className="container h-full mx-auto xl:px-32 max-w-6xl ">
+              <div className="grid grid-cols-4 h-full">
+                <Sidebar />
+                <div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
+                  {children}
+                </div>
+                <FollowBar />
+              </div>
+            </div>
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   );

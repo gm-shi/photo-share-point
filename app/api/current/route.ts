@@ -10,7 +10,7 @@ export async function GET(req: NextApiRequest) {
   }
 
   try {
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth();
 
     return NextResponse.json(currentUser);
   } catch (error) {

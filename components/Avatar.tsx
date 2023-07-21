@@ -34,6 +34,9 @@ export const Avatar: FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
         alt="Avatar"
         onClick={onClick}
         src={fetchedUser?.profileImage || "/images/placeholder.png"}
+        blurDataURL="/images/placeholder.png"
+        placeholder="blur"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </div>
   );

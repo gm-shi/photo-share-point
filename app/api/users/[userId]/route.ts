@@ -1,26 +1,31 @@
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (
+  request: NextApiRequest,
+  context: { params: any }
+) => {
   try {
-    const { userId } = req.query;
-
-    if (!userId || typeof userId !== "string") {
+    if (
+      !context?.params?.userId ||
+      typeof context?.params?.userId !== "string"
+    ) {
       throw new Error("Invalid ID");
     }
     const existingUser = await prisma?.user.findUnique({
       where: {
-        id: userId,
+        id: context?.params?.userId,
       },
     });
 
     const followercount = await prisma?.user.count({
       where: {
         followingIds: {
-          has: userId,
+          has: context?.params?.userId,
         },
       },
     });
+
     return NextResponse.json({ ...existingUser, followercount });
   } catch (error) {
     console.error(error);

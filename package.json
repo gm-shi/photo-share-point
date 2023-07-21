@@ -18,6 +18,7 @@
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "bcryptjs-react": "^2.4.6",
+    "date-fns": "^2.30.0",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "next": "13.4.9",
@@ -26,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
+    "react-spinners": "^0.13.8",
     "swr": "^2.2.0",
     "typescript": "5.1.6",
     "zustand": "^4.3.9"

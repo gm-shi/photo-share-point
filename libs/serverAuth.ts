@@ -2,7 +2,7 @@ import { NextApiRequest } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth";
 
-export const serverAuth = async (req: NextApiRequest) => {
+export const serverAuth = async () => {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) throw new Error("Not signed in");
@@ -12,8 +12,6 @@ export const serverAuth = async (req: NextApiRequest) => {
       email: session.user.email,
     },
   });
-
-  console.log(currentUser);
 
   if (!currentUser) throw new Error("Not signed in");
 
