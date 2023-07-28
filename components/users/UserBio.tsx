@@ -5,6 +5,7 @@ import { FC, useMemo } from "react";
 import { Button } from "../Button";
 import { BiCalendar } from "react-icons/bi";
 import { useEditModel } from "@/hooks/useEditModel";
+import { useFollow } from "@/hooks/useFollow";
 
 interface UserBioProps {
   userId: string;
@@ -14,6 +15,8 @@ export const UserBio: FC<UserBioProps> = ({ userId }) => {
   const { data: userData } = useUser(userId);
 
   const editModel = useEditModel();
+
+  const { isFollowing, toggleFollow, isLoading } = useFollow(userId);
 
   const createdAt = useMemo(
     () => format(new Date(userData?.createdAt), "MMM yyyy"),
@@ -25,7 +28,13 @@ export const UserBio: FC<UserBioProps> = ({ userId }) => {
         {currentUser?.id === userData.id ? (
           <Button secondary label="Edit" onClick={editModel.onOpen} />
         ) : (
-          <Button onClick={() => {}} label="Follow" secondary />
+          <Button
+            onClick={toggleFollow}
+            label={isFollowing ? "Unfollow" : "Follow"}
+            secondary={!isFollowing}
+            outline={isFollowing}
+            disabled={isLoading}
+          />
         )}
       </div>
 
@@ -47,7 +56,7 @@ export const UserBio: FC<UserBioProps> = ({ userId }) => {
             <p className=" text-neutral-500">Following</p>
           </div>
           <div className="flex flex-row items-center gap-1">
-            <p className="text-white">{userData?.followersCount || 0}</p>
+            <p className="text-white">{userData?.followerCount || 0}</p>
             <p className=" text-neutral-500">Followers</p>
           </div>
         </div>

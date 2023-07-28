@@ -1,4 +1,3 @@
-import { NextApiRequest } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./auth";
 

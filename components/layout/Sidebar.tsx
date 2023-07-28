@@ -10,28 +10,28 @@ import { SidebarPhotoSharePointButton } from "./SidebarPhotoSharePointButton";
 import { useCurrentUser } from "@/hooks/userCurrentUser";
 import { signOut } from "next-auth/react";
 
-const icons = [
-  {
-    label: "Home",
-    href: "/",
-    icon: BsHouseFill,
-  },
-  {
-    label: "Notifications",
-    href: "/notifications",
-    icon: BsBellFill,
-    auth: true,
-  },
-  {
-    label: "Profile",
-    href: "/users/123",
-    icon: FaUser,
-    auth: true,
-  },
-];
-
 export const Sidebar: FC = () => {
   const { data: currentUser } = useCurrentUser();
+
+  const icons = [
+    {
+      label: "Home",
+      href: "/",
+      icon: BsHouseFill,
+    },
+    {
+      label: "Notifications",
+      href: "/notifications",
+      icon: BsBellFill,
+      auth: true,
+    },
+    {
+      label: "Profile",
+      href: `/users/${currentUser?.id}`,
+      icon: FaUser,
+      auth: true,
+    },
+  ];
 
   return (
     <div className="col-span-1 h-full pr-4 md:pr-6">

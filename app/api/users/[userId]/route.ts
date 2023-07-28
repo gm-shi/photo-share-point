@@ -18,7 +18,7 @@ export const GET = async (
       },
     });
 
-    const followercount = await prisma?.user.count({
+    const followerCount = await prisma?.user.count({
       where: {
         followingIds: {
           has: context?.params?.userId,
@@ -26,7 +26,7 @@ export const GET = async (
       },
     });
 
-    return NextResponse.json({ ...existingUser, followercount });
+    return NextResponse.json({ ...existingUser, followerCount });
   } catch (error) {
     console.error(error);
     return new Response("", {
