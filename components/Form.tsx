@@ -8,6 +8,7 @@ import { FC, useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Button } from "./Button";
 import { Avatar } from "./Avatar";
+import { usePost } from "@/hooks/usePost";
 
 interface FormProps {
   placeholder: string;
@@ -20,7 +21,8 @@ export const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
   const loginModel = useLoginModel();
 
   const { data: currentUser } = useCurrentUser();
-  const { mutate: mutatePosts } = usePosts(postId);
+  const { mutate: mutatePosts } = usePosts();
+  const { mutate: mutatePost } = usePost(postId);
 
   const [body, setBody] = useState("");
 
@@ -30,17 +32,19 @@ export const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
     try {
       setIsloading(true);
 
-      await axios.post("/api/posts", { body });
+      const url = isComment ? `/api/comments?postId=${postId}` : "/api/posts";
+      await axios.post(url, { body });
       toast.success("Posted");
       setBody("");
       mutatePosts();
+      mutatePost();
     } catch (error) {
       toast.error("something went wrong!");
       console.log(error);
     } finally {
       setIsloading(false);
     }
-  }, [body, mutatePosts]);
+  }, [body, isComment, mutatePost, mutatePosts, postId]);
 
   return (
     <>

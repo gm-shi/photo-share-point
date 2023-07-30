@@ -6,6 +6,7 @@ import { PostItem } from "@/components/posts/PostItem";
 import { usePost } from "@/hooks/usePost";
 import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
+import { CommentFeed } from "@/components/posts/CommentFeed";
 
 const PostView = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const PostView = ({ params }: { params: { postId: string } }) => {
       <Header label="Post" showBackArrow />
       <PostItem data={fetchedPost} />
       <Form postId={params.postId} isComment placeholder="Post your reply" />
+      <CommentFeed comments={fetchedPost?.comments} />
     </>
   );
 };
