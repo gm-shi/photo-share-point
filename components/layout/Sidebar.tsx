@@ -7,7 +7,7 @@ import { SidebarLogo } from "./SidebarLogo";
 import React from "react";
 import { SidebarIcon } from "./SidebarIcon";
 import { SidebarPhotoSharePointButton } from "./SidebarPhotoSharePointButton";
-import { useCurrentUser } from "@/hooks/userCurrentUser";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 
 export const Sidebar: FC = () => {

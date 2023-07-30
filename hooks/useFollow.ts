@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { useLoginModel } from "./useLoginModel";
 import { useUser } from "./useUser";
-import { useCurrentUser } from "./userCurrentUser";
+import { useCurrentUser } from "./useCurrentUser";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 

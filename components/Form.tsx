@@ -2,7 +2,7 @@
 import { useLoginModel } from "@/hooks/useLoginModel";
 import { usePosts } from "@/hooks/usePosts";
 import { useRegisterModel } from "@/hooks/useRegisterModel";
-import { useCurrentUser } from "@/hooks/userCurrentUser";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import axios from "axios";
 import { FC, useCallback, useState } from "react";
 import { toast } from "react-hot-toast";

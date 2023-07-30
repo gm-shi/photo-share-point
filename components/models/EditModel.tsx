@@ -1,7 +1,7 @@
 "use client";
 import { useEditModel } from "@/hooks/useEditModel";
 import { useUser } from "@/hooks/useUser";
-import { useCurrentUser } from "@/hooks/userCurrentUser";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import axios from "axios";
 import { FC, useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";

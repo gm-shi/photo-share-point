@@ -1,5 +1,5 @@
 import { useUser } from "@/hooks/useUser";
-import { useCurrentUser } from "@/hooks/userCurrentUser";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { format } from "date-fns";
 import { FC, useMemo } from "react";
 import { Button } from "../Button";

@@ -1,6 +1,6 @@
 "use client";
 import { useLoginModel } from "@/hooks/useLoginModel";
-import { useCurrentUser } from "@/hooks/userCurrentUser";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useRouter } from "next/navigation";
 import React, { FC, useCallback } from "react";
 import { IconType } from "react-icons";
