@@ -5,5 +5,6 @@ declare global {
 }
 
 const prisma = global.prisma || new PrismaClient({ log: ["info"] });
+global.prisma = prisma;
 
 export default prisma;
