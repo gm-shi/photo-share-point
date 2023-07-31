@@ -1,7 +1,6 @@
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async () => {
   try {
     const users = await prisma?.user.findMany({
       orderBy: {

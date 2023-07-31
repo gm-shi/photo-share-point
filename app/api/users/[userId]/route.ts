@@ -1,10 +1,6 @@
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const GET = async (
-  request: NextApiRequest,
-  context: { params: any }
-) => {
+export const GET = async (context: { params: any }) => {
   try {
     if (
       !context?.params?.userId ||

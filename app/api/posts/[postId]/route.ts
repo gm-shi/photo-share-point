@@ -1,10 +1,6 @@
-import { NextApiRequest } from "next";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const GET = async (
-  request: NextApiRequest,
-  context: { params: any }
-) => {
+export const GET = async (context: { params: any }) => {
   try {
     const postId = context?.params?.postId;
     if (!postId || typeof postId !== "string") {
