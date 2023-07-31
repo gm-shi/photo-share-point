@@ -1,5 +1,6 @@
 import { serverAuth } from "@/libs/serverAuth";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/libs/prismadb";
 
 export const PATCH = async (req: NextRequest) => {
   try {
