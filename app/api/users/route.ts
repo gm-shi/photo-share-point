@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
   try {
     const users = await prisma?.user.findMany({
       orderBy: {

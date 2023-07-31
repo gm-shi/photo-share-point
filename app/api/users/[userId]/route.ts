@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (context: { params: any }) => {
+export const GET = async (req: NextRequest, context: { params: any }) => {
   try {
     if (
       !context?.params?.userId ||
